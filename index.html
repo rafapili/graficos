@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gráficos de Crimes, Frotas de Veículos e Feminicídio</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="feminicidio.js"></script>
+  <script src="bicicletas.js"></script>
+  <script src="FrotaVeiculoEstadoANO.js"></script>
+  <script src="FrotaVeiculoEstadoMES.js"></script>
+ 
+</head>
+<body>
+  <h3>Selecione qual gráfico deseja exibir:</h3>
+  <label>
+    <input type="radio" name="chartSelection" value="crimes" checked>
+    Crimes
+  </label>
+  <label>
+    <input type="radio" name="chartSelection" value="frotasVeiculos">
+    Frotas de Veículos
+  </label>
+  <br>
+  <canvas id="crimesFeminicidioChart"></canvas>
+  <canvas id="frotasVeiculosChart"></canvas>
+  
+  <script>
+    // Função para obter a seleção do usuário
+    function getChartSelection() {
+      var radioButtons = document.getElementsByName('chartSelection');
+      for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+          return radioButtons[i].value;
+        }
+      }
+    }
+
+    // Função para atualizar os gráficos com base na seleção do usuário
+    function handleChartSelection() {
+      var selection = getChartSelection();
+      updateCharts(selection);
+    }
+
+    // Registrar um evento de alteração para atualizar os gráficos quando a seleção do usuário mudar
+    var radioButtons = document.getElementsByName('chartSelection');
+    for (var i = 0; i < radioButtons.length; i++) {
+      radioButtons[i].addEventListener('change', handleChartSelection);
+    }
+
+    // Chamada inicial para exibir os gráficos com base na seleção padrão
+    handleChartSelection();
+  </script> <script src="/script.js"></script>
+</body>
+</html>
